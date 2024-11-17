@@ -33,7 +33,7 @@ public class A90 : MonoBehaviour {
    Coroutine ObungulateStaticCor;
 
    bool Started;
-   bool DEBUGMODEACTIVE = true;
+   bool DEBUGMODEACTIVE = false;
 
    static int ModuleIdCounter = 1;
    int ModuleId;
@@ -115,10 +115,15 @@ public class A90 : MonoBehaviour {
       Static.gameObject.SetActive(true);
       MouseXPos = Input.mousePosition.x;
       MouseYPos = Input.mousePosition.y;
+      bool CurrentlyHeldL = Input.GetMouseButton(0);
+      bool CurrentlyHeldR = Input.GetMouseButton(1);
+      bool CurrentlyHeldM = Input.GetMouseButton(2);
       bool Attacked = false;
       while (Warning.isPlaying) {
-         if (Input.mousePosition.x != MouseXPos || Input.mousePosition.y != MouseYPos) {
+         if ((Input.mousePosition.x != MouseXPos || Input.mousePosition.y != MouseYPos || CurrentlyHeldL != Input.GetMouseButton(0) || CurrentlyHeldR != Input.GetMouseButton(1) || CurrentlyHeldM != Input.GetMouseButton(2) || (Input.anyKey && CurrentlyHeldL != Input.GetMouseButton(0) && CurrentlyHeldR != Input.GetMouseButton(1) && CurrentlyHeldM != Input.GetMouseButton(2))) && !Attacked) {
             Attacked = true;
+            //Debug.Log(CurrentlyHeldL);
+            //Debug.Log(Input.GetMouseButton(0));
          }
          yield return null;
       }
@@ -150,6 +155,7 @@ public class A90 : MonoBehaviour {
 
    void Start () { //Shit that you calculate, usually a majority if not all of the module
       Needy.SetResetDelayTime(30f, 50f);
+      DEBUGMODEACTIVE = Application.isEditor;
    }
 
    void Update () { //Shit that happens at any point after initialization

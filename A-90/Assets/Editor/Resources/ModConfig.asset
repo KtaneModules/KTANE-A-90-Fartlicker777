@@ -16,9 +16,9 @@ MonoBehaviour:
   author: me
   description: "Halt your movements! Wait, wrong guy. Then again A-90 your movements
     doesn't actually make sense.\n\nDon't do anything when A-90 attacks.\n\nInspired
-    from Doors, but also from The Backdoor Project by BirdBonanza\n\nThe manual can
+    from Doors, but also from The Backdoor Project by BirdBonanza.\n\nThe manual can
     be found in the manuals folder of the game or at ktane.timwi.de.\n\r\nContact
     Fartlicker777#9169 on Discord if there are any bugs."
   version: 
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 3503e47493c2c9d4bba5c02b5dca54e6, type: 3}
