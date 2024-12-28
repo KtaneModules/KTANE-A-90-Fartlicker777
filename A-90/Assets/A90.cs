@@ -50,7 +50,7 @@ public class A90 : MonoBehaviour {
    int ModuleId;
    private bool ModuleSolved;
 
-   /*A90Settings Settings = new A90Settings();
+   A90Settings Settings = new A90Settings();
 
    class A90Settings {
       public int AiLevel = 20;
@@ -71,7 +71,7 @@ public class A90 : MonoBehaviour {
             }
          } }
       }
-   };*/
+   };
 
    
 
@@ -84,8 +84,8 @@ public class A90 : MonoBehaviour {
 
       ModuleId = ModuleIdCounter++;
 
-      /*if (!Application.isEditor) {
-         ModConfig<A90Settings> modConfig = new ModConfig<A90Settings>("A90");
+      if (!Application.isEditor) {
+         ModConfig<A90Settings> modConfig = new ModConfig<A90Settings>("A90Settings");
          //Read from the settings file, or create one if one doesn't exist
          Settings = modConfig.Settings;
          //Update the settings file in case there was an error during read
@@ -95,16 +95,16 @@ public class A90 : MonoBehaviour {
 
       string missionDesc = KTMissionGetter.Mission.Description;
       if (missionDesc != null) {
-         Regex regex = new Regex(@"\^A90AI=$(true|false)");
+         Regex regex = new Regex(@"\[A-90\] (AI=\d{1,2})");
          var match = regex.Match(missionDesc);
          if (match.Success) {
-            string[] options = match.Value.Replace("A90=", "").Split(',');
+            string[] options = match.Value.Replace("[A-90] AI=", "").Split(',');
             int value = 20;
             int.TryParse(options[0], out value);
 
-            Settings.AiLevel = value;
+            AILevel = value;
          }
-      }*/
+      }
 
       if (AILevel < 1) {
          AILevel = 1;
